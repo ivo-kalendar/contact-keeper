@@ -20,11 +20,11 @@ router.get('/', auth,
 		// 	msg: "Get logged in User..."
 		// })
 		try {
-			const user = await User.findById(req.user.id).select('-password')
+			const user = await User.findById(req.user.id).select('password')
 			res.json(user)
 		} catch (err) {
 			console.error(err.message)
-			res.status(500).send('Server Error')
+			res.status(500).send('Server Error 002')
 		}
 	}
 )
@@ -88,7 +88,7 @@ router.post('/', [
 			)
 		} catch (err) {
 			console.error(err.message)
-			res.status(500).send('Server Error')
+			res.status(500).send('Server Error 001')
 		}
 	}
 )

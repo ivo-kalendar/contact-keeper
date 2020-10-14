@@ -23,7 +23,7 @@ router.get('/', auth,
 			res.json(contacts)
 		} catch (err) {
 			console.error(err.message)
-			res.status(500).send('Server Error')
+			res.status(500).send('Server Error 003')
 		}
 	}
 )
@@ -63,7 +63,7 @@ router.post('/', [ auth, [
 			res.json(contact)
 		} catch (err) {
 			console.error(err.message)
-			res.status(500).send('Server Error')
+			res.status(500).send('Server Error 004')
 		}		
 	}
 )
@@ -107,7 +107,7 @@ router.put('/:id', auth,
 			res.json(contact)
 		} catch (err) {
 			console.error(err.message)
-			res.status(500).send('Server Error')
+			res.status(500).send('Server Error 005')
 		}
 	}
 )
@@ -132,7 +132,7 @@ router.delete('/:id', auth,
 			res.json({ msg: 'Contact removed' })
 		} catch (err) {
 			console.error(err.message)
-			res.status(500).send('Server Error')
+			res.status(500).send('Server Error 006')
 		}
 		// res.json({
 		// 	file: "contacts.js",
