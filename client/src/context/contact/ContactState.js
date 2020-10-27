@@ -27,7 +27,7 @@ const ContactState = props => {
 	const addContact = async contact => {
 		const config = {
 			headers: {
-				'Content-Type': 'alication/json'
+				'Content-Type': 'application/json'
 			}
 		}
 
