@@ -1,6 +1,7 @@
 const express = require('express')
 const connectDB = require('./config/db')
 const app = express()
+const path = require('path')
 
 //  Connect Database
 connectDB()
@@ -8,20 +9,19 @@ connectDB()
 //  Init Middleware
 app.use(express.json({ extended: false }))
 
-app.get('/', (req,res) => {
-	res.json({
-		msg: 'Welcome to the contact keeper API...',
-		author: 'Ivo Kalendar',
-		mail: 'ivokalendar@icloud.com'
-	})
-})
-
 // Define Routes
 app.use('/api/users', require('./routes/users'))
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/contacts', require('./routes/contacts'))
 
-// const HOST = 'http://192.168.0.103:' || 'http://localhost:'
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+	// Set static folder
+	app.use('*', (req,res) => {
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+	})
+}
+
 const PORT = process.env.PORT || 7788
 
 app.listen(PORT, () => console.log(`Server started on port: ${PORT}`))
